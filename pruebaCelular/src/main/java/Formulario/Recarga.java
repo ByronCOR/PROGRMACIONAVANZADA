@@ -5,6 +5,7 @@
 package Formulario;
 
 
+import Logica.Celular;
 import Logica.CelularJpaController;
 import Logica.RecargaJpaController;
 import Logica.TurnoJpaController;
@@ -243,7 +244,7 @@ DefaultTableModel mt1 = new DefaultTableModel();
         CelularJpaController celularController = new CelularJpaController(emf);
         RecargaJpaController recargaController = new RecargaJpaController(emf);
 
-        Celular celular = celCtrl.findCelular(idCelular);
+        Celular celular = celularController.findCelular(idCelular);
 
         if (celular == null) {
             JOptionPane.showMessageDialog(null, "Celular no encontrado.");
@@ -255,9 +256,7 @@ DefaultTableModel mt1 = new DefaultTableModel();
             return;
         }
 
-        String[] opciones = {"Automático", "Manual"};
-        int tipo = JOptionPane.showOptionDialog(null, "¿Cómo distribuir el valor?", "Tipo de recarga",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+       
 
         int saldo = 0;
         int megas = 0;
@@ -278,7 +277,7 @@ DefaultTableModel mt1 = new DefaultTableModel();
 
         celular.setSaldo(celular.getSaldo() + saldo);
         celular.setMegas(celular.getMegas() + megas);
-        celCtrl.edit(celular);
+        celularController.edit(celular);
 
         Recarga r = new Recarga();
         r.setValor(valor);
@@ -286,7 +285,7 @@ DefaultTableModel mt1 = new DefaultTableModel();
         r.setMegas(megas);
         r.setCelular(celular);
 
-        recCtrl.create(r);
+        recargaController.create(r);
 
         JOptionPane.showMessageDialog(null, "Recarga realizada correctamente.\nSaldo: " + saldo + "\nMegas: " + megas);
 
@@ -299,7 +298,7 @@ DefaultTableModel mt1 = new DefaultTableModel();
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
     }
-    }
+    
 
     
     }//GEN-LAST:event_jButton2ActionPerformed
