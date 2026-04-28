@@ -1,0 +1,44 @@
+class corredor extends Thread  {
+        boolean gano;
+        int pasos;
+
+        public corredor(int paso) {
+            this.gano = false;
+            this.pasos = paso;
+        }
+        
+          
+        public void run(){
+            int pasos=0;
+            int num;
+            while (!gano){
+                num = (int) (Math.random() * 5);
+                pasos+=num;
+                System.out.println(currentThread().getName() + "  "+ pasos);
+                if (pasos > 100)
+                    gano = true;
+                try {
+                    sleep( num );
+                } catch( InterruptedException e ) {
+                    ;
+                }
+            }
+            if (gano){
+                System.out.println(currentThread().getName() + "    gano   ");
+            }
+        }
+    }
+
+public class Ejemplo1_5 {
+    public static void main(String[] args) {
+        corredor t1, t2;
+        t1 = new corredor(0);
+        t2 = new corredor(0);
+        
+        t1.start();
+        t2.start();
+    }
+    
+}
+
+pasar datos un solo arreglo utilizando  hilos
