@@ -19,10 +19,10 @@ public class Taller4 {
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         // TODO code application logic here
-        NumerosAleatorios objNA = new NumerosAleatorios();
-        LogicaNumerosAleatorios objBDNA = new LogicaNumerosAleatorios();
-        while (objBDNA.ContarRegistros() <= 1000) {
 
+        LogicaNumerosAleatorios objBDNA = new LogicaNumerosAleatorios();
+        for (int i = 0; i < 1000; i++) {
+            NumerosAleatorios objNA = new NumerosAleatorios();
             objNA.setFila1((int) (Math.random() * 20) + 1);
             objNA.setFila2((int) (Math.random() * 20) + 1);
             objNA.setFila3((int) (Math.random() * 20) + 1);
@@ -31,10 +31,10 @@ public class Taller4 {
 
             boolean resultado = objBDNA.IngresarNumeros(objNA);
             if (resultado) {
-                System.out.println("numeros registrado correctamente");
+                System.out.println("numeros registrado correctamente" + (i + 1));
             } else {
                 System.out.println("numeros maximo agregados");
-                break;
+
             }
         }
 
