@@ -9,7 +9,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-
+genere un a lista de objero de 400 filas x4 columnas  de elementos entre un rango de 1 a 20,
+guardelos en una tabla en la base de datos  
+determine la sumatoria dle factoria l de ltodos
+losnuemros menores a 10 actualicelo en latabla con un valora negativo  aplique una solucion 
+para que cada hilo agrupe varios elemntos de la lista 
 /**
  *
  * @author SALASC
